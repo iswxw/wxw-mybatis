@@ -20,11 +20,11 @@ public class DBUtil {
   private static String username;
   private static String password;
 
-  static{
-    driver="com.mysql.cj.jdbc.Driver";
-    url="jdbc:mysql://127.0.0.1:3306/test_mybatis?useCharacter=UTF-8&serverTimezone=Asia/Shanghai";
-    username="root";
-    password="ganquanzhong";
+  static {
+    driver = "com.mysql.cj.jdbc.Driver";
+    url = "jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai";
+    username = "root";
+    password = "123456";
   }
 
   /**
@@ -32,6 +32,7 @@ public class DBUtil {
    */
   public static Connection open(){
     try {
+      // Class.forName("com.mysql.jdbc.Driver");
       Class.forName(driver);
       Connection connection = DriverManager.getConnection(url, username, password);
       return connection;

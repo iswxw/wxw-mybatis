@@ -2,7 +2,7 @@ package com.wxw.manager.mybatis.test;
 
 /**
  * @ClassName: AnnotationTest
- * @author: ganquanzhong
+ * @author: wxw
  * @date: 2020/7/16 13:35
  */
 public class AnnotationTest {

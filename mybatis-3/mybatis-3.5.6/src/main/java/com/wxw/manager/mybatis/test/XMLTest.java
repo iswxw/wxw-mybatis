@@ -1,6 +1,7 @@
 package com.wxw.manager.mybatis.test;
 
 
+import com.wxw.dao.UserMapper;
 import com.wxw.domain.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -14,7 +15,7 @@ import java.util.List;
 /**
  * @ClassName TestUser
  * @Description
- * @Author ganquanzhong
+ * @Author wxw
  * @Date2020/7/14 21:11
  * @Version
  **/

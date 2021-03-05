@@ -18,7 +18,7 @@ package com.wxw.manager.mybatis.test;
 /**
  * @ClassName Test
  * @Description
- * @Author ganquanzhong
+ * @Author wxw
  * @Date2020/7/14 20:46
  * @Version
  **/

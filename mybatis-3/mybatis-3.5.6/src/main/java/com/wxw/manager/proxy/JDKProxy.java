@@ -18,17 +18,6 @@ import java.util.Map;
  * @author: wxw
  * @date: 2020/7/16 14:18
  */
-
-interface UserMapper{
-
-  @Select("select * from user")
-  List<User> selectUserList();
-
-  @Select("select * from user where id =#{id} and user_name=#{username}")
-  User selectUserById(int id, String username);
-}
-
-
 public class JDKProxy {
 
   public static void main(String[] args) {
@@ -130,6 +119,16 @@ public class JDKProxy {
       }
     }
     throw new RuntimeException();
+  }
+
+
+  interface UserMapper{
+
+    @Select("select * from user")
+    List<User> selectUserList();
+
+    @Select("select * from user where id =#{id} and user_name=#{username}")
+    User selectUserById(int id, String username);
   }
 
 }
