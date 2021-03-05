@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+  <!-- 加载配置文件 -->
+  <context:property-placeholder location="classpath:jdbc.properties"/>
+
+  <!-- 启用注解扫描 -->
+  <context:annotation-config/>
+  <!-- 设置注解扫描器 -->
+  <context:component-scan base-package="com.wxw.dao"/>
+
+  <!-- 数据库连接池 -->
+  <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource">
+    <property name="driverClassName" value="${jdbc.driver}" />
+    <property name="url" value="${jdbc.url}" />
+    <property name="username" value="${jdbc.username}" />
+    <property name="password" value="${jdbc.password}" />
+  </bean>
+
+  <!-- mapper配置 使用 MapperScannerConfigurer 为包下的所有接口配置代理对象-->
+  <!-- 让spring管理sqlsessionfactory 使用mybatis和spring整合包中的 -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!-- 数据库连接池 -->
+    <property name="dataSource" ref="dataSource"/>
+    <!-- 加载mybatis的全局配置文件 <如果所有的配置都交给Spring了，则不需要mybatis的配置文件>-->
+<!--    <property name="configLocation" value="classpath:mybatis/mybatis-config.xml"/>-->
+    <!-- 当mybatis的xml文件和mapper接口不在相同包下时，
+        需要用mapperLocations属性指定xml文件的路径。
+        *是个通配符，代表所有的文件，**代表所有目录下
+     -->
+    <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+    <!--SqlSessionFactoryBean 的其他配置-->
+    <property name="configuration" ref="settings" />
+  </bean>
+
+  <!--mapper接口 和映射文件 不在同一个目录时，需要上面的设置一+此设置-->
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <property name="basePackage" value="com.gqzdev.mybatis.spring.mapper"/>
+  </bean>
+
+  <!--将mybatis主配置文件中的连接池、别名、驼峰等设置交给Spring-->
+  <!--mybatis的配置-->
+  <bean id="settings" class="org.apache.ibatis.session.Configuration">
+    <property name="mapUnderscoreToCamelCase" value="true"/>
+    <property name="useGeneratedKeys" value="true"/>
+  </bean>
+</beans>

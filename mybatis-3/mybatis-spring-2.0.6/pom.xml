@@ -139,14 +139,12 @@
             <scope>provided</scope>
         </dependency>
 
-<!--
         <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-infrastructure</artifactId>
             <version>${spring-batch.version}</version>
             <scope>provided</scope>
         </dependency>
--->
 
         <!-- Test dependencies -->
 
@@ -170,12 +168,12 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>
+        <dependency>
             <groupId>org.jboss.byteman</groupId>
             <artifactId>byteman-bmunit</artifactId>
             <version>4.0.13</version>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -191,7 +189,7 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>
+        <dependency>
             <groupId>org.springframework.batch</groupId>
             <artifactId>spring-batch-core</artifactId>
             <version>${spring-batch.version}</version>
@@ -209,7 +207,7 @@
                     <artifactId>junit</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>-->
+        </dependency>
 
         <dependency>
             <groupId>org.hsqldb</groupId>
@@ -225,7 +223,7 @@
             <scope>test</scope>
         </dependency>
 
-<!--        <dependency>
+        <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>3.6.0</version>
@@ -237,9 +235,9 @@
             <artifactId>assertj-core</artifactId>
             <version>3.18.1</version>
             <scope>test</scope>
-        </dependency>-->
+        </dependency>
 
-<!--        <dependency>
+      <dependency>
             <groupId>com.mockrunner</groupId>
             <artifactId>mockrunner-core</artifactId>
             <version>2.0.6</version>
@@ -295,12 +293,37 @@
                 </exclusion>
             </exclusions>
         </dependency>
+       <!--
         <dependency>
         <groupId>jakarta.servlet</groupId>
           <artifactId>jakarta.servlet-api</artifactId>
           <version>4.0.4</version>
           <scope>test</scope>
         </dependency>-->
+
+      <!--自己添加的依赖-->
+      <dependency>
+        <groupId>org.apache.commons</groupId>
+        <artifactId>commons-dbcp2</artifactId>
+        <version>2.7.0</version>
+      </dependency>
+      <dependency>
+        <groupId>com.alibaba</groupId>
+        <artifactId>druid</artifactId>
+        <version>1.1.22</version>
+      </dependency>
+      <!--msql数据库连接驱动-->
+      <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>8.0.15</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.25.0-GA</version>
+      </dependency>
 
         <dependency>
             <groupId>jakarta.transaction</groupId>

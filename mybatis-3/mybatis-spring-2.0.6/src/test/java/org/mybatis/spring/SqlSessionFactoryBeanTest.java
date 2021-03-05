@@ -493,8 +493,7 @@ class SqlSessionFactoryBeanTest {
   }
 
   private void assertDefaultConfig(SqlSessionFactory factory) {
-    assertConfig(factory, SqlSessionFactoryBean.class.getSimpleName(),
-        SpringManagedTransactionFactory.class);
+    assertConfig(factory, SqlSessionFactoryBean.class.getSimpleName(), SpringManagedTransactionFactory.class);
     assertThat(factory.getConfiguration().getVariables().size()).isEqualTo(0);
   }
 
