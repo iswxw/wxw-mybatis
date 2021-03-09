@@ -43,11 +43,22 @@ public class MapperProxyFactory<T> {
     return methodCache;
   }
 
+  /**
+   *
+   * @param mapperProxy
+   * @return
+   */
   @SuppressWarnings("unchecked")
   protected T newInstance(MapperProxy<T> mapperProxy) {
     return (T) Proxy.newProxyInstance(mapperInterface.getClassLoader(), new Class[] { mapperInterface }, mapperProxy);
   }
 
+  /**
+   * 通过T newInstance(SqlSession sqlSession)方法会得到一个MapperProxy对象，
+   * 然后调用T newInstance(MapperProxy mapperProxy)生成代理对象然后返回
+   * @param sqlSession
+   * @return
+   */
   public T newInstance(SqlSession sqlSession) {
     final MapperProxy<T> mapperProxy = new MapperProxy<>(sqlSession, mapperInterface, methodCache);
     return newInstance(mapperProxy);

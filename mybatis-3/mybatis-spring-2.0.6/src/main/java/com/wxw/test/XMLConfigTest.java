@@ -1,7 +1,7 @@
 package com.wxw.test;
 
-import com.gqzdev.mybatis.spring.mapper.UserMapper;
-import com.gqzdev.mybatis.spring.entity.User;
+import com.wxw.dao.UserMapper;
+import com.wxw.domain.User;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**

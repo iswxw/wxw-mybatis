@@ -30,14 +30,14 @@ import org.apache.ibatis.reflection.ExceptionUtil;
 import org.apache.ibatis.session.SqlSession;
 
 /**
+ * 基于jdk的代理模式
  * @author Clinton Begin
  * @author Eduardo Macarron
  */
 public class MapperProxy<T> implements InvocationHandler, Serializable {
 
   private static final long serialVersionUID = -4724728412955527868L;
-  private static final int ALLOWED_MODES = Lookup.PRIVATE | Lookup.PROTECTED
-      | Lookup.PACKAGE | Lookup.PUBLIC;
+  private static final int ALLOWED_MODES = Lookup.PRIVATE | Lookup.PROTECTED | Lookup.PACKAGE | Lookup.PUBLIC;
   private static final Constructor<Lookup> lookupConstructor;
   private static final Method privateLookupInMethod;
   private final SqlSession sqlSession;
@@ -64,7 +64,7 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
       // JDK 1.8
       try {
         lookup = Lookup.class.getDeclaredConstructor(Class.class, int.class);
-        lookup.setAccessible(true);
+        lookup.setAccessible(true); // 设置可调用的私有方法
       } catch (NoSuchMethodException e) {
         throw new IllegalStateException(
             "There is neither 'privateLookupIn(Class, Lookup)' nor 'Lookup(Class, int)' method in java.lang.invoke.MethodHandles.",
@@ -76,12 +76,14 @@ public class MapperProxy<T> implements InvocationHandler, Serializable {
     lookupConstructor = lookup;
   }
 
+  // 通过代理类调用代用防范
   @Override
   public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
     try {
       if (Object.class.equals(method.getDeclaringClass())) {
         return method.invoke(this, args);
       } else {
+        // 不然调用缓存中方法付
         return cachedInvoker(method).invoke(proxy, method, args, sqlSession);
       }
     } catch (Throwable t) {

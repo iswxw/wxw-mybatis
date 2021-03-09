@@ -16,6 +16,7 @@
 package org.apache.ibatis.executor;
 
 /**
+ * 用于每个线程范围内的单例，用于该线程执行环境的错误信息
  * @author Clinton Begin
  */
 public class ErrorContext {
@@ -31,9 +32,10 @@ public class ErrorContext {
   private String sql;
   private Throwable cause;
 
+  // 私有化构造方法
   private ErrorContext() {
   }
-
+  // 静态实例
   public static ErrorContext instance() {
     return LOCAL.get();
   }

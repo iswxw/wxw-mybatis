@@ -31,7 +31,6 @@ public class SqlSourceBuilderTest {
   @BeforeEach
   void setUp() {
     configuration = new Configuration();
-
     sqlSourceBuilder = new SqlSourceBuilder(configuration);
   }
 

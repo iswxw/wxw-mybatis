@@ -30,6 +30,7 @@ import org.junit.jupiter.api.Test;
 
 class AnnotationMapperBuilderTest {
 
+
   @Test
   void withOptions() {
     Configuration configuration = new Configuration();

@@ -1,8 +1,8 @@
 package com.wxw.test;
 
-import com.gqzdev.mybatis.spring.config.MyBatisConfig;
-import com.gqzdev.mybatis.spring.mapper.UserMapper;
-import com.gqzdev.mybatis.spring.entity.User;
+import com.wxw.config.MyBatisConfig;
+import com.wxw.dao.UserMapper;
+import com.wxw.domain.User;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.List;

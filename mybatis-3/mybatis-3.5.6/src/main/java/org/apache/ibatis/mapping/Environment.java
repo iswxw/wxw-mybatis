@@ -23,8 +23,12 @@ import org.apache.ibatis.transaction.TransactionFactory;
  * @author Clinton Begin
  */
 public final class Environment {
+
+  // 环境ID final 类型，不可被更改
   private final String id;
+  // 事务工厂
   private final TransactionFactory transactionFactory;
+  // 数据源
   private final DataSource dataSource;
 
   public Environment(String id, TransactionFactory transactionFactory, DataSource dataSource) {
@@ -41,7 +45,8 @@ public final class Environment {
     this.transactionFactory = transactionFactory;
     this.dataSource = dataSource;
   }
-
+  
+  // 通过建造者模式，只有在程序显式调用，才会在内存中构建，实现了懒加载
   public static class Builder {
     private final String id;
     private TransactionFactory transactionFactory;

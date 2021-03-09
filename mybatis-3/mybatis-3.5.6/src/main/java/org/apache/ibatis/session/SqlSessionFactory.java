@@ -26,12 +26,16 @@ public interface SqlSessionFactory {
 
   SqlSession openSession();
 
+  // 是否自动提交
   SqlSession openSession(boolean autoCommit);
 
+  // 设置连接
   SqlSession openSession(Connection connection);
 
+  // 事务隔离级别
   SqlSession openSession(TransactionIsolationLevel level);
 
+  // 执行器类型： SIMPLE（默认）, REUSE（重复使用）, BATCH（批量）
   SqlSession openSession(ExecutorType execType);
 
   SqlSession openSession(ExecutorType execType, boolean autoCommit);
@@ -40,6 +44,7 @@ public interface SqlSessionFactory {
 
   SqlSession openSession(ExecutorType execType, Connection connection);
 
+  // 读取环境配置
   Configuration getConfiguration();
 
 }
